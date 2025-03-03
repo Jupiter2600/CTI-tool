@@ -6,14 +6,17 @@ To install this projetc, please follow these steps :
 
 1. You may have Python 3 install on your laptop
 2. Create a Python virtual environment :
+
    ```bash
    python3 -m venv .env
    ```
 3. Activate the virtual environment :
+
    ```bash
    source .env/bin/activate
    ```
 4. Install the dependancies with pip : 
+
    ```bash
    pip3 install -r requirements.txt
    ```
@@ -23,6 +26,7 @@ To install this projetc, please follow these steps :
 Create a list of ip in a .txt and same for a list of domains
 
 ```bash
+
 python3 main.py  /path/to/your/list_ip.txt or list_domains.txt
 
 Usage: Python3 main.py -h to see the help
@@ -52,12 +56,14 @@ This script helps you check **IP addresses and domains** against multiple threat
 3. **Output:**  
    - The results are **formatted in a structured table**.
    - You can **redirect output to a file** (`result.txt`) for later analysis:
+
      ```bash
      python3 main.py list_ip.txt > result_ip.txt
      ```
 
 4. **Requirements & Setup:**  
    - Ensure you have Python installed and install dependencies with:
+   
      ```bash
      pip install -r requirements.txt
      ```
