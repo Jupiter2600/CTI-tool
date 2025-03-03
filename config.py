@@ -3,15 +3,15 @@ import os
 
 config_file = 'config.json'
 
-# Récupérer la config 
+# Get the config
 def load_config():
     try:
         with open(config_file, "r") as f:
             return json.load(f)
     except FileNotFoundError:
-        raise FileNotFoundError(f"ERREUR : Le fichier {config_file} est introuvable.")
+        raise FileNotFoundError(f"ERROR: The file {config_file} cannot be found.")
     except json.JSONDecodeError:
-        raise ValueError(f"ERREUR : Le fichier {config_file} contient un format JSON invalide.")
+        raise ValueError(f"ERROR: The file {config_file} contains an invalid JSON format.")
 
 config = load_config()
 

@@ -13,13 +13,12 @@ def analyze_ip_ST(domain):
     try:
         data = response.json().get("records", [])
     except requests.exceptions.JSONDecodeError:
-        return "⚠️ Aucune donnée disponible sur SecurityTrails"
+        return "⚠️ No data available on SecurityTrails"
 
     if not data:
-        return "⚠️ Aucune donnée trouvée pour ce domaine"
+        return "⚠️ No data found for this domain"
 
-    
-    # Récupération des infos
+    # Get information
     results = []
     for record in data:
         hostname = record.get("hostname", "N/A")

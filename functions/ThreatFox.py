@@ -13,24 +13,23 @@ def analyze_ip_TF(ip):
         "search_term": ip,
         "exact_match": True
     }
-    response = requests.post(url, headers=headers) # Attention : TF nécéssite un POST et pas un GET
+    response = requests.post(url, headers=headers)  # Warning: TF requires a POST request, not a GET request
     try:
         data = response.json()
     except requests.exceptions.JSONDecodeError:
-        return "⚠️ Aucune donnée disponible sur ThreatFox"
+        return "⚠️ No data available on ThreatFox"
     
-    
-    # Vérification si "data" existe et contient bien des dictionnaires
+    # Check if "data" exists and contains dictionaries
     if "data" not in data or not isinstance(data["data"], list) or not data["data"]:
-        return "Aucune menace détectée"
+        return "No threat detected"
 
-    # Récupération des infos
+    # Get information
     threats = []
     for result in data["data"]:
-        if isinstance(result, dict):  # Vérifier que result est bien un dictionnaire
-            malware = result.get("malware", "Inconnu")  # Nom du malware
-            threat_type = result.get("threat_type", "Inconnu")  # Type de menace
-            confidence = result.get("confidence_level", "N/A")  # Niveau de confiance
-            threats.append(f"{malware} ({threat_type}, Confiance: {confidence}%)")
+        if isinstance(result, dict):  # Ensure that the result is a dictionary
+            malware = result.get("malware", "Unknown")  # Malware name
+            threat_type = result.get("threat_type", "Unknown")  # Threat type
+            confidence = result.get("confidence_level", "N/A")  # Confidence level
+            threats.append(f"{malware} ({threat_type}, Confidence: {confidence}%)")
 
-    return "\n".join(threats) if threats else "Aucune menace détectée"
+    return "\n".join(threats) if threats else "No threat detected"

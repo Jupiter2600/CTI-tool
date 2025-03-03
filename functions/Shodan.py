@@ -9,15 +9,14 @@ def analyze_ip_Sho(ip):
     try:
         data = response.json()
     except requests.exceptions.JSONDecodeError:
-        return "⚠️ Aucune donnée disponible sur Shodan"
+        return "⚠️ No data available on Shodan"
     
-    
-    # Récupération des infos
-    domains = data.get("domains", "N/A")  # Domaine
+    # Get information
+    domains = data.get("domains", "N/A")  # Domain
 
-    # Récupérer tous les ports ouverts
-    ports = [entry.get("port", "N/A") for entry in data.get("data", [])] #si on regarde la doc shodan on voit qu'on doit passer par data pour récupérer les ports
-    ports_str = ", ".join(map(str, ports)) if ports else "Aucun port trouvé"
+    # Get all open ports
+    ports = [entry.get("port", "N/A") for entry in data.get("data", [])]  # See Shodan documentation, we need to go through 'data' to get ports
+    ports_str = ", ".join(map(str, ports)) if ports else "No ports found"
 
     last_update = data.get("last_update", "Never")  # Last report
 

@@ -14,12 +14,12 @@ def analyze_ip_URLH(domain):
     try:
         data = response.json()
     except requests.exceptions.JSONDecodeError:
-        return "⚠️ Aucune donnée disponible sur URLHaus"
+        return "⚠️ No data available on URLHaus"
 
     if data.get("query_status") == "no_result":
-        return "⚠️ Aucun résultat trouvé pour ce domaine"
+        return "⚠️ No results found for this domain"
 
-    # Récupération des infos
+    # Get information
     results = []
     urls = data.get("urls", [])
 
@@ -28,8 +28,8 @@ def analyze_ip_URLH(domain):
         date_added = url_info.get("date_added", "N/A")
         url_status = url_info.get("url_status", "N/A")
         reporter = url_info.get("reporter", "N/A")
-        tags = ", ".join(url_info.get("tags", [])) if url_info.get("tags") else "Aucun tag"
+        tags = ", ".join(url_info.get("tags", [])) if url_info.get("tags") else "No tags"
 
-        results.append(f"URL: {url_detected}\nAjouté le: {date_added}\nStatut: {url_status}\nReporter: {reporter}\nTags: {tags}\n")
+        results.append(f"URL: {url_detected}\nAdded on: {date_added}\nStatus: {url_status}\nReporter: {reporter}\nTags: {tags}\n")
 
     return "\n".join(results)

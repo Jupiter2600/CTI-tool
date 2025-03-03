@@ -16,13 +16,12 @@ def analyze_ip_AbIPDB(ip):
     try:
         data = response.json().get("data", {})
     except requests.exceptions.JSONDecodeError:
-        return "⚠️ Aucune donnée disponible sur AbuseIPDB"
+        return "⚠️ No data available on AbuseIPDB"
 
-
-    # récupération des infos
+    # Get information
     confidence_score = data.get("abuseConfidenceScore", 0)  # Confidence score
-    domain = data.get("domain", "N/A")  # Domaine 
+    domain = data.get("domain", "N/A")  # Domain
     last_reported = data.get("lastReportedAt", "Never")  # Last report
-    safe_message = "IP Safe" if confidence_score < 10 else "Attention, this IP can be compromised" # Message
+    message = "IP Safe" if confidence_score < 10 else "Warning, this IP might be compromised"  # Message
 
-    return f"Abuse Score: {confidence_score}%\nDomain: {domain}\nDernier Report: {last_reported}\n{safe_message}"
+    return f"Abuse Score: {confidence_score}%\nDomain: {domain}\nLast Report: {last_reported}\n{message}"
