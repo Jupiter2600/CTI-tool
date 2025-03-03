@@ -40,13 +40,13 @@ This script helps you check **IP addresses and domains** against multiple threat
 ### **How It Works** 🚀
 
 1. **Input :**  
-   - The script reads from a file (`ip.txt` or `domain.txt`).
+   - The script reads from a file (`list_ip.txt` or `list_domain.txt`).
    - Each line contains either an **IP address** or a **domain name**.
    - It automatically detects whether the input is an IP or a domain.
 
 2. **Analysis :**  
    - The script queries multiple security APIs:
-     - **VirusTotal** → Checks reputation and previous reports.
+     - **VirusTotal** → Checks reputation and malicious score.
      - **AbuseIPDB** → Retrieves the abuse confidence score.
      - **Shodan** → Fetches open ports and services.
      - **ThreatFox** → Detects potential malware threats.
@@ -65,7 +65,7 @@ This script helps you check **IP addresses and domains** against multiple threat
    - Ensure you have Python installed and install dependencies with:
 
      ```bash
-     pip install -r requirements.txt
+     pip3 install -r requirements.txt
      ```
    - Add your API keys in `config.json` and keep it **excluded** from Git with `.gitignore`.
 
