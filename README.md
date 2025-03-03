@@ -2,7 +2,7 @@
 
 ## Installation 🛠️
 
-To install this projetc, please follow these steps : 
+To install this project, please follow these steps : 
 
 1. You may have Python 3 install on your laptop
 2. Create a Python virtual environment :
