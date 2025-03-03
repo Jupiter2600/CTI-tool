@@ -1,4 +1,5 @@
 # Ignore files
 config.json
 __pycache__
-*.txt
+list_domain.txt
+list_ip.txt
