@@ -20,6 +20,7 @@ To install this project, please follow these steps :
    ```bash
    pip3 install -r requirements.txt
    ```
+5. Add your API keys in `config.json` and keep it **excluded** from Git with `.gitignore`.
 
 ## Usage
 
@@ -60,14 +61,6 @@ This script helps you check **IP addresses and domains** against multiple threat
      ```bash
      python3 main.py list_ip.txt > result_ip.txt
      ```
-
-4. **Requirements & Setup :**  
-   - Ensure you have Python installed and install dependencies with:
-
-     ```bash
-     pip3 install -r requirements.txt
-     ```
-   - Add your API keys in `config.json` and keep it **excluded** from Git with `.gitignore`.
 
 
 📌 **Example of results in the terminal :**
