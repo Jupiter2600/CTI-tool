@@ -1,8 +1,8 @@
 # CTI Tool README
 
-## ⚠️ Advertising
+## ⚠️ Warning
 
-⚠️ **Advertising :** This tool is intended for **security research and analysis**. Make sure you comply with the **terms of use** of each API service.
+⚠️ **Warning :** This tool is intended for **security research and analysis**. Make sure you comply with the **terms of use** of each API service.
 
 ## Installation 🛠️
 
