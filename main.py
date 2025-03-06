@@ -13,7 +13,7 @@ import time
 # Call functions
 from functions.VirusTotal import analyze_ip_VT, analyze_domain_VT
 from functions.AbuseIPDB import analyze_ip_AbIPDB
-from functions.Shodan import analyze_ip_Sho, analyze_domain_Sho
+from functions.Shodan import analyze_ip_Sho
 from functions.ThreatFox import analyze_ip_TF
 from functions.SecurityTrails import analyze_ip_ST
 from functions.URLHaus_Tag import fetch_domains_by_malware_tag
