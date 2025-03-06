@@ -1,8 +1,7 @@
 import requests
 from config import AbuseIPDB
 
-def analyze_ip_AbIPDB(ip):
-
+def analyze_ip_AbIPDB(ip, return_score=False):
     url = "https://api.abuseipdb.com/api/v2/check"
     headers = {
         "Accept": "application/json",
@@ -12,16 +11,24 @@ def analyze_ip_AbIPDB(ip):
         "ipAddress": ip,
         "maxAgeInDays": 90
     }
+    
     response = requests.get(url, headers=headers, params=params)
+
     try:
         data = response.json().get("data", {})
     except requests.exceptions.JSONDecodeError:
         return "⚠️ No data available on AbuseIPDB"
 
-    # Get information
-    confidence_score = data.get("abuseConfidenceScore", 0)  # Confidence score
-    domain = data.get("domain", "N/A")  # Domain
-    last_reported = data.get("lastReportedAt", "Never")  # Last report
-    message = "IP Safe" if confidence_score < 10 else "Warning, this IP might be compromised"  # Message
+    # Get info
+    confidence_score = data.get("abuseConfidenceScore", 0)
+    domain = data.get("domain", "N/A")
+    last_reported = data.get("lastReportedAt", "Never")
+    country_name = data.get("countryName")
+    if not country_name:  # if we don't find country name we get the country code
+        country_code = data.get("countryCode", "N/A")
+        country_name = country_code
 
-    return f"Abuse Score: {confidence_score}%\nDomain: {domain}\nLast Report: {last_reported}\n{message}"
+    if return_score:
+        return confidence_score
+
+    return f"Abuse Score: {confidence_score}%\n\nCountry: {country_name}\n\nDomain: {domain}\n\nLast Report: {last_reported}"
