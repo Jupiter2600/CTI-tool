@@ -1,5 +1,9 @@
 # CTI Tool README
 
+## ⚠️ Advertising
+
+⚠️ **Advertising :** This tool is intended for **security research and analysis**. Make sure you comply with the **terms of use** of each API service.
+
 ## Installation 🛠️
 
 To install this project, please follow these steps:
@@ -66,12 +70,7 @@ This script helps you check **IP addresses and domains** against multiple threat
 3. **Output:**
    - The results are displayed **in a structured table** using `rich`.
    - A **checkmark (✅) or a red cross (❌)** indicates whether an IP or domain is flagged as malicious.
-   - You can **redirect the output** to a file (`result.txt`) for later analysis:
-
-     ```bash
-     python3 main.py list_ip.txt > result_ip.txt
-     ```
-   - The script automatically **Generate an HTML report:**
+   - The script automatically **Generate an HTML report** for later analysis:
    
      ```bash
      python3 main.py list_ip.txt
@@ -106,6 +105,17 @@ When running the tool, you will see a **colorful and structured** output like th
 
 ## 📝 Notes
 - Ensure you **do not exceed API request limits**, as some services have daily/monthly quotas.
-- Make sure **config.json** is correctly configured with valid API keys.
-- The script **automatically distinguishes** between IPs and domains.
-🛡️ **Use responsibly!** This tool is intended for **security research and analysis**. Make sure you comply with the **terms of use** of each API service.
+- Make sure **config.json** is correctly configured with valid API keys. Create it like this:
+
+```bash
+{
+    "virustotal": "",
+    "shodan": "",
+    "abuseipdb": "",
+    "abuseCH": "",
+    "securitytrails": ""
+}
+
+```
+With your API Keys in the "".
+
