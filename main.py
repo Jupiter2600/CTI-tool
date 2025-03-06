@@ -3,6 +3,12 @@ from tabulate import tabulate
 import argparse
 import sys
 import re
+from rich.console import Console
+from rich.table import Table
+from rich.panel import Panel
+from rich.progress import Progress, SpinnerColumn, BarColumn, TimeElapsedColumn
+
+import time
 
 # Call functions
 from functions.VirusTotal import analyze_ip_VT
@@ -11,6 +17,8 @@ from functions.Shodan import analyze_ip_Sho
 from functions.ThreatFox import analyze_ip_TF
 from functions.SecurityTrails import analyze_ip_ST
 from functions.URLHaus import analyze_ip_URLH
+
+console = Console()
 
 class MyArgumentParser(argparse.ArgumentParser):
 
@@ -59,13 +67,32 @@ def main():
 
     for entry in entries:
         if is_ip(entry):  # Valid IP
-            print(f"\nResults for {entry}:")
-            print(tabulate([[analyze_ip_VT(entry), analyze_ip_AbIPDB(entry), analyze_ip_Sho(entry), analyze_ip_TF(entry)]],
-                            headers=["VirusTotal", "AbuseIPDB", "Shodan", "ThreatFox"], tablefmt="grid"))
+            panel = Panel(f"{entry}", title="IP", expand=False, style="bold cyan")
+
+            table = Table()
+            table.add_column("VirusTotal", style="blue")
+            table.add_column("AbuseIPDB", style="magenta")
+            table.add_column("Shodan", style="red")
+            table.add_column("ThreatFox", style="green")
+
+            table.add_row(analyze_ip_VT(entry), analyze_ip_AbIPDB(entry), analyze_ip_Sho(entry), analyze_ip_TF(entry))
+
+            console.print("\n")
+            console.print(panel)
+            console.print(table)
+            
         else:  # Valid domain
-            print(f"\nResults for {entry}:")
-            print(tabulate([[analyze_ip_ST(entry), analyze_ip_URLH(entry)]],
-                            headers=["SecurityTrails", "URLHaus"], tablefmt="grid"))
+            panel = Panel(f"{entry}", title="Domain", expand=False, style="bold cyan")
+
+            table = Table()
+            table.add_column("SecurityTrails", style="blue")
+            table.add_column("URLHaus", style="magenta")
+
+            table.add_row(analyze_ip_ST(entry), analyze_ip_URLH(entry))
+
+            console.print("\n")
+            console.print(panel)
+            console.print(table)
 
 if __name__ == "__main__":
     main()
