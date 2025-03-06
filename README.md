@@ -117,5 +117,3 @@ When running the tool, you will see a **colorful and structured** output like th
 }
 
 ```
-With your API Keys in the "".
-
