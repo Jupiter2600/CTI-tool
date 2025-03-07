@@ -58,6 +58,7 @@ This script helps you check **IP addresses and domains** against multiple threat
    - The script reads from a file (`list_ip.txt` or `list_domain.txt`).
    - Each line contains either an **IP address** or a **domain name**.
    - It automatically detects whether the input is an IP or a domain.
+   - The script can also read a malware name with `tag:malware`.
 
 2. **Analysis:**
    - The script queries multiple security APIs:
@@ -76,6 +77,8 @@ This script helps you check **IP addresses and domains** against multiple threat
      python3 main.py list_ip.txt
      # The report will be saved as `result.html`
      ```
+
+   - The result for the tag research is a **result.txt** file with all the domains.
 
 📌 **Example of results in the terminal:**
 
