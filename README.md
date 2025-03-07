@@ -128,8 +128,7 @@ Or you can see only the search step and the extracted domains. Please wait once 
     "virustotal": "",
     "shodan": "",
     "abuseipdb": "",
-    "abuseCH": "",
-    "securitytrails": ""
+    "abuseCH": ""
 }
 
 ```
