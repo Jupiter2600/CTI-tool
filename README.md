@@ -3,13 +3,15 @@
 ## ⚠️ Warning
 
 ⚠️ **Warning :** This tool is intended for **security research and analysis**. Make sure you comply with the **terms of use** of each API service.
-⚠️ **API Rate Limits :**
-Be aware that if you're using free API keys, you have a daily limit on the number of requests you can make:
+
+⚠️ **API Rate Limits :** Be aware that if you're using free API keys, you have a daily limit on the number of requests you can make:
+
     - VirusTotal: 500 requests/day
     - AbuseIPDB: 1000 requests/day
     - Shodan: 100 query credits/month (each query costs 1 credit)
     - ThreatFox: No strict daily limit mentioned, but excessive usage may result in suspension
     - URLHaus: No strict daily limit mentioned, but excessive usage may result in suspension
+
 Note: Make sure to check the official documentation of each service for the latest details and potential updates on rate limits.
 
 ## Installation 🛠️
