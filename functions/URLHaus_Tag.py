@@ -16,7 +16,7 @@ def fetch_domains_by_malware_tag(tag):
         data = response.json()
     except requests.exceptions.JSONDecodeError:
         return "No data available on UrlHaus"
-    
+
 
     # Exctract domains from url
     domains = set()
@@ -32,6 +32,4 @@ def fetch_domains_by_malware_tag(tag):
         for domain in sorted(domains):  # Sort to have better view
             f.write(domain + "\n")
 
-    console.print(f"[bold green]Saved {len(domains)} active domains in {output_file}[/bold green]\n")
-
-
+    console.print(f"\n[bold green]Saved {len(domains)} active domains in {output_file}[/bold green]\n")

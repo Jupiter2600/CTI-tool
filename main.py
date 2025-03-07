@@ -1,5 +1,4 @@
 import requests
-from tabulate import tabulate
 import argparse
 import sys
 import re
@@ -7,8 +6,6 @@ from rich.console import Console
 from rich.columns import Columns
 from rich.table import Table
 from rich.panel import Panel
-from rich.progress import Progress, SpinnerColumn, BarColumn, TimeElapsedColumn
-import time
 
 # Call functions
 from functions.VirusTotal import analyze_ip_VT, analyze_domain_VT
@@ -73,7 +70,6 @@ def main():
             console.print(f"\nSearching for active domains related to malware tag: [bold red]{malware_tag}[/bold red]")
             fetch_domains_by_malware_tag(malware_tag)
 
-        
         elif is_ip(entry):  # IP file
             malicious_score = analyze_ip_VT(entry, return_score=True)
             confidence_score = analyze_ip_AbIPDB(entry, return_score=True)
@@ -99,9 +95,8 @@ def main():
 
             table = Table()
             table.add_column("VirusTotal", style="blue")
-            table.add_column("Shodan", style="red")
 
-            table.add_row(analyze_domain_VT(entry), analyze_domain_Sho(entry))
+            table.add_row(analyze_domain_VT(entry))
 
             console.print("\n")
             console.print(Columns([panel, Panel(status_icon, style="bold white")], expand=False))

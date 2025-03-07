@@ -37,7 +37,7 @@ Create a `.txt` file containing a list of IPs or domains.
 python3 main.py /path/to/your/list_ip.txt or /path/to/your/list_domains.txt
 
 # Show help message
-python3 main.py -h 
+python3 main.py -h
 ```
 
 ### **Usage with malware tags**
@@ -54,12 +54,12 @@ This script helps you check **IP addresses and domains** against multiple threat
 
 ### **How It Works** 🚀
 
-1. **Input:**  
+1. **Input:**
    - The script reads from a file (`list_ip.txt` or `list_domain.txt`).
    - Each line contains either an **IP address** or a **domain name**.
    - It automatically detects whether the input is an IP or a domain.
 
-2. **Analysis:**  
+2. **Analysis:**
    - The script queries multiple security APIs:
      - **VirusTotal** (same for IP and domains) → Checks reputation, malicious score and give the label.
      - **AbuseIPDB** → Retrieves the abuse confidence score, the country, the domain and the last report.
@@ -71,7 +71,7 @@ This script helps you check **IP addresses and domains** against multiple threat
    - The results are displayed **in a structured table** using `rich`.
    - A **checkmark (✅) or a red cross (❌)** indicates whether an IP or domain is flagged as malicious.
    - The script automatically **Generate an HTML report** for later analysis:
-   
+
      ```bash
      python3 main.py list_ip.txt
      # The report will be saved as `result.html`
@@ -83,6 +83,9 @@ When running the tool, you will see a **colorful and structured** output like th
 
 ![alt text](readme_attachment/list-ip.png)
 
+Or you can see only the search step and the extracted domains. Please wait once this second message appears.
+
+![alt text](readme_attachment/tag.png)
 
 ## 📁 Project Structure
 
